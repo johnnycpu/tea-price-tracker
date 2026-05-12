@@ -6,12 +6,17 @@ const db = require('./database');
 const { scrapeTeaPrice, scrapeEggPrice } = require('./scraper');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static('public'));
+
+// 靜態檔案 - 使用絕對路徑確保在 Azure 環境中正常運作
+const publicPath = path.join(__dirname, 'public');
+app.use(express.static(publicPath));
+
+console.log(`📁 靜態檔案位置: ${publicPath}`);
 
 // Routes
 
@@ -234,5 +239,6 @@ app.get('/api/scraper-test', async (req, res) => {
 // 啟動伺服器
 app.listen(PORT, () => {
   console.log(`伺服器運行於 http://localhost:${PORT}`);
-  console.log('清心福全珍珠奶茶個人化CPI追蹤系統已啟動');
+  console.log(`清心福全珍珠奶茶個人化CPI追蹤系統已啟動`);
+  console.log(`環境: ${process.env.NODE_ENV || 'development'}`);
 });
