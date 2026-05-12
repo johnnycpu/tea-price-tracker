@@ -1,4 +1,5 @@
-const API_BASE = 'http://localhost:3000';
+// 使用相對 URL，適用於本地和雲端環境
+const API_BASE = window.location.origin;
 
 // 初始化 - 設定今天的日期為預設值
 document.addEventListener('DOMContentLoaded', () => {
