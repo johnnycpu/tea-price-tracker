@@ -1,8 +1,37 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
+const fs = require('fs');
+const os = require('os');
 
-const dbPath = path.join(__dirname, 'data', 'prices.db');
-const db = new sqlite3.Database(dbPath);
+// 確定資料庫路徑
+let dbPath;
+
+if (process.env.NODE_ENV === 'production' || process.env.WEBSITE_INSTANCE_ID) {
+  // Azure App Service 環境 - 使用系統臨時目錄
+  const tempDir = os.tmpdir();
+  const appDir = path.join(tempDir, 'tea-price-tracker');
+  if (!fs.existsSync(appDir)) {
+    fs.mkdirSync(appDir, { recursive: true });
+  }
+  dbPath = path.join(appDir, 'prices.db');
+  console.log(`☁️ Azure 環境 - 資料庫位置: ${dbPath}`);
+} else {
+  // 本地開發環境
+  const dbDir = path.join(__dirname, 'data');
+  if (!fs.existsSync(dbDir)) {
+    fs.mkdirSync(dbDir, { recursive: true });
+  }
+  dbPath = path.join(dbDir, 'prices.db');
+  console.log(`💻 本地環境 - 資料庫位置: ${dbPath}`);
+}
+
+const db = new sqlite3.Database(dbPath, (err) => {
+  if (err) {
+    console.error('❌ 資料庫連接失敗:', err);
+  } else {
+    console.log('✅ 資料庫連接成功');
+  }
+});
 
 // 初始化資料庫
 db.serialize(() => {
