@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>清心福全珍珠奶茶 - 個人化CPI追蹤</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 標題區 -->
+        <header class="header">
+            <h1>🥤 清心福全珍珠奶茶</h1>
+            <p class="subtitle">個人化通貨膨脹指數 (CPI) 追蹤系統</p>
+        </header>
+
+        <!-- 輸入區 -->
+        <section class="input-section">
+            <h2>📝 記錄價格</h2>
+            <form id="priceForm">
+                <div class="form-group">
+                    <label for="date">日期：</label>
+                    <input type="date" id="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="productName">商品名稱：</label>
+                    <input type="text" id="productName" value="清心福全珍珠奶茶" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="price">價格 (NT$)：</label>
+                    <input type="number" id="price" placeholder="輸入價格" step="0.01" required>
+                </div>
+                <button type="submit" class="btn btn-add">+ 新增記錄</button>
+            </form>
+        </section>
+
+        <!-- 搜尋區 -->
+        <section class="search-section">
+            <h2>🔍 簡易查詢</h2>
+            <div class="search-group">
+                <input type="date" id="searchDate" placeholder="搜尋日期">
+                <button class="btn btn-search" onclick="searchByDate()">搜尋</button>
+                <button class="btn btn-reset" onclick="loadAllPrices()">全部顯示</button>
+            </div>
+        </section>
+
+        <!-- 爬蟲區 -->
+        <section class="scraper-section">
+            <h2>🕷️ 自動爬蟲</h2>
+            <p class="scraper-info">🌐 從食品中國網自動爬取最新茶飲價格</p>
+            <div class="scraper-buttons">
+                <button class="btn btn-scrape" onclick="scrapeTea()">
+                    🕷️ 爬取清心福全價格
+                </button>
+                <button class="btn btn-scrape-save" onclick="scrapeAndSave()">
+                    💾 爬取並儲存
+                </button>
+            </div>
+            <div id="scraperStatus" class="scraper-status"></div>
+        </section>
+
+        <!-- 統計區 -->
+        <section class="statistics-section">
+            <h2>📊 統計資訊</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-label">最高價格</span>
+                    <span class="stat-value" id="maxPrice">-</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">最低價格</span>
+                    <span class="stat-value" id="minPrice">-</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">平均價格</span>
+                    <span class="stat-value" id="avgPrice">-</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">記錄筆數</span>
+                    <span class="stat-value" id="totalRecords">-</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 表格區 -->
+        <section class="table-section">
+            <h2>📋 價格記錄清單</h2>
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>日期</th>
+                        <th>商品名稱</th>
+                        <th>價格 (NT$)</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody id="priceTableBody">
+                    <tr>
+                        <td colspan="4" class="empty-message">暫無記錄，請新增</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

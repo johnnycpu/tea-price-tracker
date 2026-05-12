@@ -1,0 +1,331 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+}
+
+/* 標題區 */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    border-bottom: 3px solid #667eea;
+    padding-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.1em;
+    color: #666;
+    font-weight: 300;
+}
+
+/* 表單區 */
+.input-section,
+.search-section,
+.statistics-section,
+.table-section {
+    margin-bottom: 30px;
+}
+
+.input-section h2,
+.search-section h2,
+.statistics-section h2,
+.table-section h2 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 15px;
+    border-left: 4px solid #667eea;
+    padding-left: 10px;
+}
+
+#priceForm {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr auto;
+    gap: 15px;
+    align-items: flex-end;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 0.95em;
+}
+
+.form-group input {
+    padding: 10px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+}
+
+.form-group input[readonly] {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+}
+
+/* 按鈕 */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.95em;
+}
+
+.btn-add {
+    background-color: #667eea;
+    color: white;
+}
+
+.btn-add:hover {
+    background-color: #5568d3;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-search {
+    background-color: #48bb78;
+    color: white;
+}
+
+.btn-search:hover {
+    background-color: #38a169;
+}
+
+.btn-reset {
+    background-color: #cbd5e0;
+    color: #333;
+}
+
+.btn-reset:hover {
+    background-color: #a0aec0;
+}
+
+.btn-delete {
+    background-color: #f56565;
+    color: white;
+    padding: 6px 12px;
+    font-size: 0.85em;
+}
+
+.btn-delete:hover {
+    background-color: #e53e3e;
+}
+
+/* 搜尋區 */
+.search-group {
+    display: flex;
+    gap: 10px;
+}
+
+.search-group input {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 1em;
+}
+
+.search-group input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+/* 爬蟲區 */
+.scraper-section {
+    background-color: #f7fafc;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #f6ad55;
+}
+
+.scraper-info {
+    font-size: 0.95em;
+    color: #666;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.scraper-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn-scrape {
+    background-color: #ed8936;
+    color: white;
+}
+
+.btn-scrape:hover {
+    background-color: #dd6b20;
+    transform: translateY(-2px);
+}
+
+.btn-scrape-save {
+    background-color: #48bb78;
+    color: white;
+}
+
+.btn-scrape-save:hover {
+    background-color: #38a169;
+    transform: translateY(-2px);
+}
+
+.scraper-status {
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 6px;
+    min-height: 20px;
+    font-size: 0.9em;
+    display: none;
+}
+
+.scraper-status.loading {
+    display: block;
+    background-color: #bee3f8;
+    color: #2c5282;
+    border-left: 4px solid #3182ce;
+}
+
+.scraper-status.success {
+    display: block;
+    background-color: #c6f6d5;
+    color: #22543d;
+    border-left: 4px solid #48bb78;
+}
+
+.scraper-status.error {
+    display: block;
+    background-color: #fed7d7;
+    color: #742a2a;
+    border-left: 4px solid #f56565;
+}
+
+/* 統計區 */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+    opacity: 0.9;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+/* 表格區 */
+.price-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.price-table thead {
+    background-color: #f7fafc;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.price-table th {
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    color: #333;
+}
+
+.price-table tbody tr {
+    border-bottom: 1px solid #e0e0e0;
+    transition: background-color 0.3s;
+}
+
+.price-table tbody tr:hover {
+    background-color: #f7fafc;
+}
+
+.price-table td {
+    padding: 15px;
+    color: #555;
+}
+
+.empty-message {
+    text-align: center;
+    color: #999;
+    font-style: italic;
+    padding: 40px 15px !important;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    #priceForm {
+        grid-template-columns: 1fr;
+    }
+
+    .header h1 {
+        font-size: 1.8em;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .search-group {
+        flex-direction: column;
+    }
+
+    .container {
+        padding: 20px;
+    }
+}

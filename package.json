@@ -1,0 +1,21 @@
+{
+  "name": "tea-price-tracker",
+  "version": "1.0.0",
+  "description": "清心福全珍珠奶茶個人化CPI追蹤系統",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node app.js"
+  },
+  "keywords": ["inflation", "CPI", "tea", "price-tracker"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "sqlite3": "^5.1.6",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "axios": "^1.6.0",
+    "cheerio": "^1.0.0-rc.12"
+  }
+}
