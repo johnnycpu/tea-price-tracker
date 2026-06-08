@@ -1,0 +1,35 @@
+name: Deploy assignment5-vue to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies (assignment5-vue)
+        run: |
+          cd assignment5-vue
+          npm ci
+
+      - name: Build (assignment5-vue)
+        run: |
+          cd assignment5-vue
+          npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./assignment5-vue/dist
