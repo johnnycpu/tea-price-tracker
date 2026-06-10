@@ -32,7 +32,7 @@ import ScraperSection from './components/ScraperSection.vue'
 import StatisticsSection from './components/StatisticsSection.vue'
 import PriceTable from './components/PriceTable.vue'
 
-const API_BASE = ''
+const API_BASE = import.meta.env.VITE_API_BASE_URL || ''
 const STORAGE_KEY = 'tea-price-tracker-prices'
 
 let nextLocalId = Date.now()

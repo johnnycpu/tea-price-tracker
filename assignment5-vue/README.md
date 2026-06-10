@@ -26,6 +26,12 @@ git push -u origin main
 
 3. GitHub Actions workflow (`.github/workflows/pages.yml`) 會在 `main` branch push 時自動執行並部署到 Pages。若需要，請至 GitHub Repo → Settings → Pages，確認 Source 設為 `gh-pages` 或 GitHub Actions 自動建立的設定。
 
+若要讓這個前端連到有後端的網址，請在部署時設定 `VITE_API_BASE_URL`，例如：
+
+```bash
+https://tea-price-tracker-D1321322.azurewebsites.net
+```
+
 ## 元件介紹
 
 這個專案把首頁拆成幾個獨立的 Vue 元件，重點放在「元件化」而不是外觀相似度。
